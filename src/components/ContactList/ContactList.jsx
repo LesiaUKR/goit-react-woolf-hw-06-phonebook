@@ -6,18 +6,14 @@ import { useSelector } from 'react-redux/es/exports';
 
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
-  console.log(contacts);
   const filter = useSelector(getFilter);
-  console.log(filter);
 
   const getFilteredContacts = () => {
     if (!filter) {
-      console.log(contacts);
       return contacts;
     }
 
     return contacts.filter(contact => {
-      console.log(contact);
       return contact.name.toLowerCase().includes(filter.toLowerCase());
     });
   };

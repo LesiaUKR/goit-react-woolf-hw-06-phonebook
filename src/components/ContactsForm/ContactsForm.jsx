@@ -34,8 +34,6 @@ export const ContactsForm = () => {
     const existstName = contacts.find(
       ({ name }) => name.toLowerCase() === normName
     );
-    console.log(normName);
-    console.log(existstName);
     if (existstName) {
       return Notify.info(`This name is already in contacts!`);
     }
@@ -59,7 +57,7 @@ export const ContactsForm = () => {
           <Field
             type="text"
             name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            pattern="^[a-zA-Zа-яА-Я]+([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
@@ -70,7 +68,7 @@ export const ContactsForm = () => {
           <Field
             type="tel"
             name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
             title="Phone number must be digits and can contain spaces, dashes, pa-rentheses and can start with +"
             required
           />
